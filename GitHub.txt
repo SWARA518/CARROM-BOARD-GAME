@@ -1,0 +1,67 @@
+var ball = createSprite(200, 200, 10, 10);
+var striker1 = createSprite(50, 200, 20, 200);
+var striker2 = createSprite(350, 200, 20, 200);
+var striker3 = createSprite(150, 50, 200, 20);
+var goal = createSprite(350,45,50,10);
+var striker4 = createSprite(250, 350, 200, 20);
+var x;
+function draw() {
+  background("yellow");
+  
+createEdgeSprites();
+ball.bounceOff(striker1);
+ball.bounceOff(striker2);
+ball.bounceOff(striker3);
+ball.bounceOff(striker4);
+ball.bounce(goal);
+fill("green")
+if (keyDown(LEFT_ARROW)) {
+    ball.x=ball.x-5;
+if (ball.isTouching(striker1) || ball.isTouching(striker2) || ball.isTouching(striker3) || ball.isTouching(striker4))
+{fill("red")
+  text("#game over",200,200);
+}  
+  }
+  if (keyDown(RIGHT_ARROW)) {
+  ball.x=ball.x+5  
+  if (ball.isTouching(striker1) || ball.isTouching(striker2) || ball.isTouching(striker3) || ball.isTouching(striker4))
+{fill("red")
+  text("#game over",200,200);
+}
+  }
+if (keyDown(UP_ARROW)) {
+   ball.y =ball.y-5
+   if(ball.isTouching(goal))
+   {
+           ball.y=ball.y-2
+           goal.y=goal.y-2
+   }
+if(goal.y<1){
+textSize("18");
+fill("teal")
+text("#you win",200,200) ;
+    }
+ 
+
+if (ball.isTouching(striker1) || ball.isTouching(striker2) || ball.isTouching(striker3) || ball.isTouching(striker4))
+
+{fill("red")
+  text("#game over",200,200);
+}
+}
+if (keyDown(DOWN_ARROW)) {
+   ball.y=ball.y+5 
+  
+} 
+
+ if (ball.isTouching(striker1) || ball.isTouching(striker2) || ball.isTouching(striker3) || ball.isTouching(striker4)){
+fill("red");
+text("#game over",200,200);
+ }
+  
+
+   textFont("Arial Black"); 
+   textSize("13")
+   text("push the goal out of he screen to win",100,30)            
+    drawSprites();
+}
